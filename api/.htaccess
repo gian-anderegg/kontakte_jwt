@@ -1,0 +1,7 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+RewriteRule ^kontakt/$   index.php?ressource=kontakt&id= [nc,qsa]
+RewriteRule ^kontakt/([0-9]+)/$   index.php?ressource=kontakt&id=$1 [nc,qsa]
