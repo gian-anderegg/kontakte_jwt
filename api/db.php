@@ -30,7 +30,7 @@
     }
 
     function db_delete_kontakte_by_id($id, $pdo) {
-        $sql = $pdo->prepare("delete from kontakte where kid = $id");
+        $sql = $pdo->prepare("delete from kontakte where kid = :id");
         $sql->bindParam(":id", $id);
         $sql->execute();
         return $sql->fetch(PDO::FETCH_ASSOC);
