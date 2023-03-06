@@ -12,11 +12,11 @@
                         return getKontakteById($id, $pdo);
                     }
                 case 'POST':
-                    return insertKontakt($dataFromClient);
+                    return insertKontakt($dataFromClient, $pdo);
                 case 'PUT':
-                    return updateKontakt($dataFromClient);
+                    return updateKontakt($dataFromClient, $pdo);
                 case 'DELETE':
-                    return deleteKontakt($id);
+                    return deleteKontakt($id, $pdo);
                 case 'OPTIONS':
                     return formatMessage(405);
                 default:
@@ -50,10 +50,10 @@
         else return formatMessage(420, $inputfields);
     }
 
-    function insertKontakt($kontakt) {
+    function insertKontakt($kontakt, $pdo) {
         $status = checkInput($kontakt);
         if ($status['status'] == 200) {
-            db_insert_kontakt($kontakt);
+            db_insert_kontakt($kontakt, $pdo);
         }
         return formatMessage(200, "Kontakt wurde gespeichert");
     }
@@ -68,13 +68,13 @@
         return formatMessage(200, $data);
     }
 
-    function deleteKontakt($id) {
-        db_delete_kontakte_by_id($id);
+    function deleteKontakt($id, $pdo) {
+        db_delete_kontakte_by_id($id, $pdo);
         return formatMessage(200, "Kontakt wurde gelöscht");
     }
 
-    function updateKontakt($kontakt) {
-        db_update_kontakte_by_id($kontakt);
+    function updateKontakt($kontakt, $pdo) {
+        db_update_kontakte_by_id($kontakt, $pdo);
         return formatMessage(200, "Kontakt wurde angepasst");
     }
 
