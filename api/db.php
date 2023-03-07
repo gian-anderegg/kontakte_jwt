@@ -1,5 +1,9 @@
 <?php
     function db_insert_kontakt($kontakt, $pdo) {
+        if ($kontakt->plz = "") {
+            $kontakt->plz = 0;
+        }
+
         $stmt = $pdo->prepare("INSERT INTO kontakte (name, vorname, strasse, plz, ort, email, tpriv, tgesch) 
                            VALUES (:name, :vorname, :strasse, :plz, :ort, :email, :tpriv, :tgesch)");
 
