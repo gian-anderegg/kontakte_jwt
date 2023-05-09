@@ -1,0 +1,7 @@
+{
+    "name": "schule/api",
+    "type": "project",
+    "require": {
+        "firebase/php-jwt": "^6.4"
+    }
+}
